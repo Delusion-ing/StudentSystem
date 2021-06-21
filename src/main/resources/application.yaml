@@ -1,0 +1,33 @@
+admin:
+  path: /stu
+
+server:
+  port: 8080
+
+  datasource:
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.0/swiftpassjob?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: 200530
+      filters: stat
+      filter:
+        stat:
+          enabled: true
+          log-slow-sql: true
+          slow-sql-millis: 10
+      initial-size: 5
+      max-active: 100
+      max-wait: 60000
+      min-evictable-idle-time-millis: 300000
+      min-idle: 3
+      test-on-borrow: true
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      validation-query: select 1
+      connection-properties: config.decrypt=false;config.decrypt.key=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCGLsGgsqFFzkRjj2MkeLzs/WIdQYc97R6LGffAKXkfuBRhMFqzWZSPksQbeaulUutt32dy3l9M/DEw8/iLlgepCwqoMc9uRDOoWqeMLffESFu/TT2JBz1IgGe6qdtimyRxkToCjRccxtiuxa3nOKXDcf+cHgUEC9H2qN3RPRd/4wIDAQAB
+  redis:
+    redisson:
+      config: classpath:redisson.yaml
+    timeout: 3000ms
